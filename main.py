@@ -79,7 +79,7 @@ generateb = Button(text="Сгенерировать", command=generate)
 
 #Image
 
-img = ImageTk.PhotoImage(Image.open("gif.gif"))
+img = ImageTk.PhotoImage(Image.open("H:\VS code Projects\GeneratorTokenShop\gif.gif"))
 labelimg = Label(image = img)
 
 #####pack vse taki
