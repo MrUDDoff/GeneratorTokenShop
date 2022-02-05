@@ -8,7 +8,8 @@ from tkinter import ttk
 from tkinter import messagebox as mb
 from PIL import Image, ImageTk
 
-availableslots = ['10', '11', '12', '13', '14', '15', '16', '19', '20', '21', '22', '23', '24', '25', '28', '29', '30', '31', '32', '33', '34', '37', '38', '39', '40', '41', '42', '43']
+#availableslots = ['10', '11', '12', '13', '14', '15', '16', '19', '20', '21', '22', '23', '24', '25', '28', '29', '30', '31', '32', '33', '34', '37', '38', '39', '40', '41', '42', '43']
+availableslots = ['10']
 
 def generate():
     partyidget = partyid.get()
@@ -21,14 +22,19 @@ def generate():
     slotrow = f"      '{slotget}':"
     displayrow = f"        displayed: PLAYER_HEAD 1 name:&c{nameget} lore:&7Тип:&d_{typeget}|&7HDB-ID:&d_{hdbidget}|&7Цена:&d_%price%_Токенов"
     costrow = f'        cost: {costget}'
-    messagerow = "        message: &bТокены &8» &7Спасибо за покупку, %player%! &c-%price% токенов."
+    messagerow = "        'message: &bТокены &8» &7Спасибо за покупку, %player%! &c-%price% токенов.'"
     commandsrow1 = '        commands:'
     commandsrow2 = f"        - 'hdb give {hdbidget} 1 %player%'"
+
+    name.delete(0, END)
+    hdbid.delete(0, END)
 
     reshetka = '#'
     date = datetime.today()
     datestr = str(date)
     if slotget in availableslots:
+        statuslistbox.insert(END, slotget) 
+        availableslots.remove(slotget)
         print(reshetka, "Automatically generated", date, "through the MrUDD program - https://github.com/MrUDDoff/GeneratorTokenShop")
         print(slotrow)
         print(displayrow)
@@ -46,12 +52,24 @@ def generate():
         "Ошибка", 
         "Запрещённый слот!")
 
+def plusone():
+    try:
+        slotget = int(slot.get())
+        slot.delete(0, END)
+        slotplusone = slotget + 1
+        slot.insert(END, slotplusone)
+    except:
+        mb.showerror(
+        "Ошибка", 
+        "Не указан слот!")        
+
 root = Tk()
 
 root.title("Generator Token Shop (Head's edition)")
-root.geometry("550x550")
+root.geometry("550x750")
 
 #frames
+statusframe = LabelFrame(root, text="Status Slots")
 partyidframe = LabelFrame(root, text="PartyID")
 slotframe = LabelFrame(root, text="Slot ID")
 nameframe = LabelFrame(root, text="Name")
@@ -62,21 +80,26 @@ costframe = LabelFrame(root, text="Cost")
 
 #Entrys
 partyid = Entry(partyidframe, width=60, justify=CENTER)
-slot = Entry(slotframe, width=60, justify=CENTER)
+slot = Entry(slotframe, width=55, justify=CENTER)
 name = Entry(nameframe, width=60, justify=CENTER)
 loretype = Entry(typeframe, width=60, justify=CENTER)
 hdbid = Entry(hdbidframe, width=60, justify=CENTER)
 cost = Entry(costframe, width=60, justify=CENTER)
 
+#StatusSlots
+
+statuslistbox=Listbox(statusframe)
+
 #combobox
 # types=['Алфавит', 'Животные', 'Блоки', 'Декорации', 'Еда и напитки', 'Люди', 'Гуманоиды', 'Прочее', 'Монстры', 'Растения']
-types = ['Stone', 'white']
+types = ['STONE', 'white']
 
 type = ttk.Combobox(typeframe, value=types, width=60)
 type['state'] = 'readonly'
 
 #Buttons
 generateb = Button(text="Сгенерировать", command=generate)
+plusoneb = Button(slotframe, text="+1", command=plusone)
 
 #Image
 
@@ -88,8 +111,12 @@ labelimg = Label(image = img)
 partyidframe.pack()
 partyid.pack()
 
+statusframe.pack()
+statuslistbox.pack(side=LEFT)
+
 slotframe.pack()
-slot.pack()
+slot.pack(side=LEFT)
+plusoneb.pack(side=RIGHT)
 
 nameframe.pack()
 name.pack()
