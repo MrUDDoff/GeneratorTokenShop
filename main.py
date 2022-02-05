@@ -8,8 +8,7 @@ from tkinter import ttk
 from tkinter import messagebox as mb
 from PIL import Image, ImageTk
 
-#availableslots = ['10', '11', '12', '13', '14', '15', '16', '19', '20', '21', '22', '23', '24', '25', '28', '29', '30', '31', '32', '33', '34', '37', '38', '39', '40', '41', '42', '43']
-availableslots = ['10']
+availableslots = ['10', '11', '12', '13', '14', '15', '16', '19', '20', '21', '22', '23', '24', '25', '28', '29', '30', '31', '32', '33', '34', '37', '38', '39', '40', '41', '42', '43']
 
 def generate():
     partyidget = partyid.get()
