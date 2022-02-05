@@ -1,9 +1,35 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     #   '10':
     #     displayed: PLAYER_HEAD 1 name:&cA lore:&7Тип:&d_STONE|&7HDB-ID:&d_475|&7Цена:&d_%price%_Токенов
     #     cost: 100
     #     message: '&bТокены &8» &7Спасибо за покупку, %player%! &c-%price% токенов.'
     #     commands:
     #     - 'hdb give 475 1 %player%'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #   '0':
     #     displayed: BLACK_STAINED_GLASS_PANE 1 name:&7
     #     cost: 0
