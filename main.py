@@ -69,7 +69,8 @@ hdbid = Entry(hdbidframe, width=60, justify=CENTER)
 cost = Entry(costframe, width=60, justify=CENTER)
 
 #combobox
-types=['Алфавит', 'Животные', 'Блоки', 'Декорации', 'Еда и напитки', 'Люди', 'Гуманоиды', 'Прочее', 'Монстры', 'Растения']
+# types=['Алфавит', 'Животные', 'Блоки', 'Декорации', 'Еда и напитки', 'Люди', 'Гуманоиды', 'Прочее', 'Монстры', 'Растения']
+types = ['Stone', 'white']
 
 type = ttk.Combobox(typeframe, value=types, width=60)
 type['state'] = 'readonly'
